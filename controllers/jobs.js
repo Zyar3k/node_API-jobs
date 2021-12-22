@@ -11,7 +11,7 @@ const getJob = async (req, res) => {
 };
 
 const createJob = async (req, res) => {
-  res.send("create job");
+  res.json(req.user);
   //   const job = await Job.create(req.body);
   //   res.send(job);
 };
