@@ -1,9 +1,22 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
+// const { BadRequestError } = require("../errors");
+const bcrypt = require("bcryptjs");
 
 const register = async (req, res) => {
-  const newUser = await User.create({ ...req.body });
+  // const { name, email, password } = req.body;
+  // if (!name || !email || !password) {
+  //   throw new BadRequestError("Please provide all required fields");
+  // }
+  const { name, email, password } = req.body;
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const tempUser = { name, email, password: hashedPassword };
+
+  const newUser = await User.create({ ...tempUser });
   res.status(StatusCodes.CREATED).json(newUser);
   //   const { email, password } = req.body;
   //   const user = await User.findOne({ email });
