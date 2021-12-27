@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,9 @@
   "homepage": "https://github.com/Zyar3k/node_API-jobs#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
